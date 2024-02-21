@@ -127,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
                 if type(arg_splited[1]) is str:
                     arg_splited[1] = arg_splited[1] 
                     replace("_", " ")
-                    replace('"', '\\"')
+                    replace('"', '\\"') # type: ignore
                 kw[arg_splited[0]] = arg_splited[1]
         except SyntaxError:
             print("** class name missing **")
@@ -217,7 +217,7 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage.all(HBNBCommand.classes[args]).items():
+            for k, v in storage.all(HBNBCommand.classes[args]).items(): # type: ignore
                 print_list.append(str(v))
         else:
             for k, v in storage.all().items():
